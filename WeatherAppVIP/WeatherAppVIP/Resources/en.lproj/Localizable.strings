@@ -1,0 +1,11 @@
+"error.network.missing.url" = "URL is nil missing";
+"error.network.encoding.failed" = "Parameter encoding failed";
+
+"network.response.success" = "Success";
+"network.response.authentication.failed" = "You need to be authenticated";
+"network.response.bad.request" = "Bad request";
+"network.response.outdated.request" = "The url you requested is outdated";
+"network.response.request.failed" = "Network request failed";
+"network.response.empty.response" = "Response returned with no data to decode";
+"network.response.invalid.response" = "We could not decode the response";
+"network.response.unknown" = "Unknown error";
