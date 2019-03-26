@@ -35,73 +35,19 @@ public enum HTTPTask {
 		additionHeaders: HTTPHeaders?)
 }
 
-enum Result<String> {
+enum NetworkRequestResult {
 	case success
-	case failure(String)
-}
-
-extension NetworkService {
-	func handleNetworkResponse(_ response: HTTPURLResponse) -> Result<String> {
-		switch response.statusCode {
-		case 200...299: return .success
-		case 401...500: return .failure(NetworkResponse.authenticationError.rawValue)
-		case 501...599: return .failure(NetworkResponse.badRequest.rawValue)
-		case 600: return .failure(NetworkResponse.outdated.rawValue)
-		default: return .failure(NetworkResponse.failed.rawValue)
-		}
-	}
+	case failure(Error)
 }
 
 // MARK: - NetworkService
 protocol NetworkService {
 	var manager: NetworkRequestManager { get }
-	func handleNetworkResponse(_ response: HTTPURLResponse) -> Result<String>
 	func cancelCurrentRequest()
 }
 
 extension NetworkService {
 	func cancelCurrentRequest() {
 		manager.cancel()
-	}
-}
-
-// MARK: - Response handling
-enum NetworkResponse: String {
-	case success
-	case authenticationError
-	case badRequest
-	case outdated
-	case failed
-	case noData
-	case unableToDecode
-	case unknownError
-
-	typealias RawValue = String
-
-	init?(rawValue: String) {
-		switch rawValue {
-		case "network.response.success".localized: self = .success
-		case "network.response.authentication.failed".localized: self = .authenticationError
-		case "network.response.bad.request".localized: self = .badRequest
-		case "network.response.outdated.request".localized: self = .outdated
-		case "network.response.request.failed".localized: self = .failed
-		case "network.response.empty.response".localized: self = .noData
-		case "network.response.invalid.response".localized: self = .unableToDecode
-		case "network.response.unknown".localized: self = .unknownError
-		default: return nil
-		}
-	}
-
-	var rawValue: String {
-		switch self {
-		case .success: return "network.response.success".localized
-		case .authenticationError: return "network.response.authentication.failed".localized
-		case .badRequest: return "network.response.bad.request".localized
-		case .outdated: return "network.response.outdated.request".localized
-		case .failed: return "network.response.request.failed".localized
-		case .noData: return "network.response.empty.response".localized
-		case .unableToDecode: return "network.response.invalid.response".localized
-		case .unknownError: return "network.response.unknown".localized
-		}
 	}
 }

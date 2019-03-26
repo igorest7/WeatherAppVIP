@@ -11,7 +11,7 @@ import Foundation
 public struct URLParameterEncoder: ParameterEncoder {
 	public func encode(urlRequest: inout URLRequest, with parameters: Parameters) throws {
 
-		guard let url = urlRequest.url else { throw CustomError.networkRequestMissingURL }
+		guard let url = urlRequest.url else { throw "error.network.missing.url".localized }
 
 		if !parameters.isEmpty, var urlComponents = URLComponents(url: url,
 													 resolvingAgainstBaseURL: false) {

@@ -6,7 +6,7 @@
 
 final class MainWeatherInteractor {
     var output: MainWeatherInteractorOutput!
-	var worker = WeatherNetworkService()
+	var worker: WeatherNetworkWorker = WeatherNetworkWorkerImplementation()
 
     init(output: MainWeatherInteractorOutput) {
         self.output = output
@@ -16,6 +16,8 @@ final class MainWeatherInteractor {
 //MARK: - MainWeatherInteractorInput
 extension MainWeatherInteractor: MainWeatherInteractorInput {
 	func viewDidLoad() {
-		worker.getCurrentWeatherInCity("London")
+		worker.getCurrentWeatherInCity("London") { (result) in
+			
+		}
 	}
 }
