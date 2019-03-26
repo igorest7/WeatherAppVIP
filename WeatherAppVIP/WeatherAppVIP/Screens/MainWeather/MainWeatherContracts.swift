@@ -15,6 +15,7 @@ protocol MainWeatherRouter: ViewRouter {
 
 //MARK: - Outputs
 protocol MainWeatherViewOutput {
+	func viewDidLoad()
 }
 
 protocol MainWeatherInteractorOutput {

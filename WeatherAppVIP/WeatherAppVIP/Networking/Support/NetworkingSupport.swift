@@ -1,5 +1,5 @@
 //
-//  RemoteServicesSupport.swift
+//  NetworkServicesSupport.swift
 //  WeatherAppVIP
 //
 //  Created by Igor Nakonetsnoi on 22/03/2019.
@@ -40,11 +40,7 @@ enum Result<String> {
 	case failure(String)
 }
 
-protocol RemoteService {
-	func handleNetworkResponse(_ response: HTTPURLResponse) -> Result<String>
-}
-
-extension RemoteService {
+extension NetworkService {
 	func handleNetworkResponse(_ response: HTTPURLResponse) -> Result<String> {
 		switch response.statusCode {
 		case 200...299: return .success
@@ -53,6 +49,19 @@ extension RemoteService {
 		case 600: return .failure(NetworkResponse.outdated.rawValue)
 		default: return .failure(NetworkResponse.failed.rawValue)
 		}
+	}
+}
+
+// MARK: - NetworkService
+protocol NetworkService {
+	var manager: NetworkRequestManager { get }
+	func handleNetworkResponse(_ response: HTTPURLResponse) -> Result<String>
+	func cancelCurrentRequest()
+}
+
+extension NetworkService {
+	func cancelCurrentRequest() {
+		manager.cancel()
 	}
 }
 

@@ -16,12 +16,15 @@ final class MainWeatherViewController: UIViewController {
 
 //MARK: - View lifecycle
 extension MainWeatherViewController {
-    
-    override func awakeFromNib()
-    {
+    override func awakeFromNib() {
         super.awakeFromNib()
         configurator.configureWith(viewController: self)
     }
+
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		output.viewDidLoad()
+	}
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         router.prepare(for: segue, sender: sender)

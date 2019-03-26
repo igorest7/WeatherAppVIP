@@ -10,16 +10,15 @@ import Foundation
 
 public typealias NetworkRequestManagerCompletion = (_ data: Data?,_ response: URLResponse?,_ error: Error?) -> Void
 
-protocol NetworkRequestManagerProtocol: class {
-	associatedtype Router: URLRequestConvertible
-	func request(_ router: Router, completion: @escaping NetworkRequestManagerCompletion)
+protocol NetworkRequestManager: class {
+	func request(_ router: URLRequestConvertible, completion: @escaping NetworkRequestManagerCompletion)
 	func cancel()
 }
 
-class RemoteRequestManager<Router: URLRequestConvertible>: NetworkRequestManagerProtocol {
+class NetworkRequestManagerImplementation: NetworkRequestManager {
 	private var task: URLSessionTask?
 
-	func request(_ router: Router, completion: @escaping NetworkRequestManagerCompletion) {
+	func request(_ router: URLRequestConvertible, completion: @escaping NetworkRequestManagerCompletion) {
 		let session = URLSession.shared
 		do {
 			let request = try router.asURLRequest()
