@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C1A05AC224BEE41001D011B /* WeatherReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1A05AB224BEE41001D011B /* WeatherReading.swift */; };
 		5C65E5F52244203E001FB04C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C65E5F42244203E001FB04C /* AppDelegate.swift */; };
 		5C65E5FA2244203E001FB04C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C65E5F82244203E001FB04C /* Main.storyboard */; };
 		5C65E5FC2244203F001FB04C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C65E5FB2244203F001FB04C /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5C1A05AB224BEE41001D011B /* WeatherReading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherReading.swift; sourceTree = "<group>"; };
 		5C65E5F12244203E001FB04C /* WeatherAppVIP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherAppVIP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C65E5F42244203E001FB04C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C65E5F92244203E001FB04C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -90,6 +92,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C1A05AA224BEE2C001D011B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5C1A05AD224BEE47001D011B /* DataModel */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5C1A05AD224BEE47001D011B /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				5C1A05AB224BEE41001D011B /* WeatherReading.swift */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
 		5C65E5E82244203E001FB04C = {
 			isa = PBXGroup;
 			children = (
@@ -112,12 +130,13 @@
 			isa = PBXGroup;
 			children = (
 				5C65E63D2244D1BA001FB04C /* BaseExtensions */,
-				5C65E6392244D0A9001FB04C /* Resources */,
+				5C1A05AA224BEE2C001D011B /* Models */,
 				5C65E6332244CF65001FB04C /* Networking */,
+				5C65E6392244D0A9001FB04C /* Resources */,
 				5C65E6182244CC6C001FB04C /* Screens */,
-				5CBD7A19224ABA4D00A74095 /* Workers */,
 				5C65E63A2244D0B7001FB04C /* Storyboards */,
 				5C65E6302244CD4F001FB04C /* SupportingObjects */,
+				5CBD7A19224ABA4D00A74095 /* Workers */,
 			);
 			path = WeatherAppVIP;
 			sourceTree = "<group>";
@@ -167,7 +186,6 @@
 			isa = PBXGroup;
 			children = (
 				5C65E6552245466D001FB04C /* Routers */,
-				5CBD7A16224AA7E800A74095 /* Services */,
 				5CBD7A13224AA7CE00A74095 /* Support */,
 				5C65E6442244D95F001FB04C /* URLParameterEncoding */,
 			);
@@ -226,13 +244,6 @@
 				5C65E63E2244D403001FB04C /* NetworkRequestManager.swift */,
 			);
 			path = Support;
-			sourceTree = "<group>";
-		};
-		5CBD7A16224AA7E800A74095 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 		5CBD7A19224ABA4D00A74095 /* Workers */ = {
@@ -353,6 +364,7 @@
 				5CBD7A15224AA7E400A74095 /* WeatherNetworkWorker.swift in Sources */,
 				5C65E65022454457001FB04C /* JSONParameterEncoder.swift in Sources */,
 				5C65E65422454668001FB04C /* CurrentWeatherNetworkRouter.swift in Sources */,
+				5C1A05AC224BEE41001D011B /* WeatherReading.swift in Sources */,
 				5C65E6322244CF60001FB04C /* NetworkingSupport.swift in Sources */,
 				5CBD7A18224AAB5900A74095 /* Either.swift in Sources */,
 				5C65E65222454464001FB04C /* URLParameterEncoder.swift in Sources */,

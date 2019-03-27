@@ -17,7 +17,12 @@ final class MainWeatherInteractor {
 extension MainWeatherInteractor: MainWeatherInteractorInput {
 	func viewDidLoad() {
 		worker.getCurrentWeatherInCity("London") { (result) in
-			
+			switch result {
+			case .left(let weather):
+				print("reading \(weather)")
+			case .right(let error):
+				print("error \(error)")
+			}
 		}
 	}
 }

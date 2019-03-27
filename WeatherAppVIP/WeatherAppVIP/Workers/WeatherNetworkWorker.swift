@@ -9,18 +9,24 @@
 import Foundation
 
 protocol WeatherNetworkWorker: NetworkService {
-	func getCurrentWeatherInCity(_ city: String, completion: @escaping (Either<String, Error>) -> Void)
+	func getCurrentWeatherInCity(_ city: String, completion: @escaping (Either<WeatherReading, Error>) -> Void)
 }
 
 struct WeatherNetworkWorkerImplementation: WeatherNetworkWorker {
 	let manager: NetworkRequestManager = NetworkRequestManagerImplementation()
 
-	func getCurrentWeatherInCity(_ city: String, completion: @escaping (Either<String, Error>) -> Void) {
+	func getCurrentWeatherInCity(_ city: String, completion: @escaping (Either<WeatherReading, Error>) -> Void) {
 		manager.cancel()
 		manager.request(CurrentWeatherNetworkRouter.getCurrentWeatherInCity(city)) { result in
 			switch result {
 			case .left(let data):
-				completion(.left("completed"))
+				do {
+					let weather = try JSONDecoder().decode(WeatherReading.self, from: data)
+					completion(.left(weather))
+				}catch {
+					completion(.right("network.response.invalid.response".localized))
+				}
+
 			case .right(let error): completion(.right(error))
 			}
 		}
