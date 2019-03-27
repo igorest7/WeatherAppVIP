@@ -14,7 +14,16 @@ final class MainWeatherPresenter {
     }
 }
 
-//MARK: - MainWeatherPresenterInput
+// MARK: - MainWeatherPresenterInput
 extension MainWeatherPresenter: MainWeatherPresenterInput {
-
+	func receivedCurrentWeather(response: CurrentWeather.Response) {
+		let temperatureString = String(format: "main.weather.temperature.label".localized, response.weather.temp)
+		let feelTemperatureString = String(format: "main.weather.feel.temperature.label".localized, response.weather.feelTemp)
+		let cloudCoverString = String(format: "main.weather.cloud.cover.label".localized, response.weather.cloudCover)
+		let viewModel = CurrentWeather.ViewModel(temperature: temperatureString,
+												 feelTemperature: feelTemperatureString,
+												 cloudCover: cloudCoverString,
+												 condition: response.weather.conditionText)
+		output.presentWeather(viewModel: viewModel)
+	}
 }

@@ -13,20 +13,20 @@ protocol MainWeatherConfigurator {
 protocol MainWeatherRouter: ViewRouter {
 }
 
-//MARK: - Outputs
+// MARK: - Outputs
 protocol MainWeatherViewOutput {
 	func viewDidLoad()
 }
 
 protocol MainWeatherInteractorOutput {
-    
+	func receivedCurrentWeather(response: CurrentWeather.Response)
 }
 
 protocol MainWeatherPresenterOutput: class {
-   
+	func presentWeather(viewModel: CurrentWeather.ViewModel)
 }
 
-//MARK: - Inputs
+// MARK: - Inputs
 protocol MainWeatherViewInput: MainWeatherPresenterOutput {
     
 }

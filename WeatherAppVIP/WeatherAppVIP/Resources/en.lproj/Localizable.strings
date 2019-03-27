@@ -8,3 +8,7 @@
 "network.response.empty.response" = "Response returned with no data to decode";
 "network.response.invalid.response" = "We could not decode the response";
 "network.response.unknown" = "Unknown error";
+
+"main.weather.temperature.label" = "Temperature: %.1f°C";
+"main.weather.feel.temperature.label" = "Feels like: %.1f°C";
+"main.weather.cloud.cover.label" = "Cloud coverate: %d%%";

@@ -8,13 +8,19 @@ import UIKit
 
 final class MainWeatherViewController: UIViewController {
     
-    //MARK: - Properties
+    // MARK: - Properties
     private let configurator = MainWeatherConfiguratorImplementation()
     var output: MainWeatherViewOutput!
     var router: MainWeatherRouter!
+
+	// MARK: - IBOutlets
+	@IBOutlet weak var temperatureLabel: UILabel!
+	@IBOutlet weak var feelTemperatureLabel: UILabel!
+	@IBOutlet weak var cloudCoverLabel: UILabel!
+	@IBOutlet weak var conditionLabel: UILabel!
 }
 
-//MARK: - View lifecycle
+// MARK: - View lifecycle
 extension MainWeatherViewController {
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,6 +37,12 @@ extension MainWeatherViewController {
     }
 }
 
-//MARK: - MainWeatherViewInput
+// MARK: - MainWeatherViewInput
 extension MainWeatherViewController: MainWeatherViewInput {
+	func presentWeather(viewModel: CurrentWeather.ViewModel) {
+		temperatureLabel.text = viewModel.temperature
+		feelTemperatureLabel.text = viewModel.feelTemperature
+		cloudCoverLabel.text = viewModel.cloudCover
+		conditionLabel.text = viewModel.condition
+	}
 }
