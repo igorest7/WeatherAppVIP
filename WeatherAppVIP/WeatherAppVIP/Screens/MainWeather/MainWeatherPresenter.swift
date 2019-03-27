@@ -26,4 +26,8 @@ extension MainWeatherPresenter: MainWeatherPresenterInput {
 												 condition: response.weather.conditionText)
 		output.presentWeather(viewModel: viewModel)
 	}
+
+	func receivedError(response: Alert.Response) {
+		output.showAlertWith(title: nil, message: response.error.localizedDescription)
+	}
 }

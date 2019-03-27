@@ -20,9 +20,10 @@ protocol MainWeatherViewOutput {
 
 protocol MainWeatherInteractorOutput {
 	func receivedCurrentWeather(response: CurrentWeather.Response)
+	func receivedError(response: Alert.Response)
 }
 
-protocol MainWeatherPresenterOutput: class {
+protocol MainWeatherPresenterOutput: class, Alertable {
 	func presentWeather(viewModel: CurrentWeather.ViewModel)
 }
 

@@ -25,7 +25,8 @@ extension MainWeatherInteractor: MainWeatherInteractorInput {
 					let response = CurrentWeather.Response(weather: weather)
 					self?.output.receivedCurrentWeather(response: response)
 				case .right(let error):
-					print("error \(error)")
+					let response = Alert.Response(error: error)
+					self?.output.receivedError(response: response)
 				}
 			}
 		}
