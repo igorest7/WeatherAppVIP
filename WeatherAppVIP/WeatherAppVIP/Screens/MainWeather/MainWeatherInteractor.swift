@@ -18,16 +18,14 @@ final class MainWeatherInteractor {
 // MARK: - MainWeatherInteractorInput
 extension MainWeatherInteractor: MainWeatherInteractorInput {
 	func viewDidLoad() {
-		worker.getCurrentWeatherInCity("London") { (result) in
-			DispatchQueue.main.async { [weak self] in
-				switch result {
-				case .left(let weather):
-					let response = CurrentWeather.Response(weather: weather)
-					self?.output.receivedCurrentWeather(response: response)
-				case .right(let error):
-					let response = Alert.Response(error: error)
-					self?.output.receivedError(response: response)
-				}
+		worker.getCurrentWeatherInCity("London") { [weak self] (result) in
+			switch result {
+			case .left(let weather):
+				let response = CurrentWeather.Response(weather: weather)
+				self?.output.receivedCurrentWeather(response: response)
+			case .right(let error):
+				let response = Alert.Response(error: error)
+				self?.output.receivedError(response: response)
 			}
 		}
 	}

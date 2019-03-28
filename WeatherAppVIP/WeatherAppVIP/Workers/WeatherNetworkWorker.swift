@@ -12,22 +12,24 @@ protocol WeatherNetworkWorker: NetworkService {
 	func getCurrentWeatherInCity(_ city: String, completion: @escaping (Either<WeatherReading, Error>) -> Void)
 }
 
-struct WeatherNetworkWorkerImplementation: WeatherNetworkWorker {
+class WeatherNetworkWorkerImplementation: WeatherNetworkWorker {
 	let manager: NetworkRequestManager = NetworkRequestManagerImplementation()
 
 	func getCurrentWeatherInCity(_ city: String, completion: @escaping (Either<WeatherReading, Error>) -> Void) {
 		manager.cancel()
 		manager.request(CurrentWeatherNetworkRouter.getCurrentWeatherInCity(city)) { result in
-			switch result {
-			case .left(let data):
-				do {
-					let weather = try JSONDecoder().decode(WeatherReading.self, from: data)
-					completion(.left(weather))
-				}catch {
-					completion(.right("network.response.invalid.response".localized))
-				}
+			DispatchQueue.main.async {
+				switch result {
+				case .left(let data):
+					do {
+						let weather = try JSONDecoder().decode(WeatherReading.self, from: data)
+						completion(.left(weather))
+					}catch {
+						completion(.right("network.response.invalid.response".localized))
+					}
 
-			case .right(let error): completion(.right(error))
+				case .right(let error): completion(.right(error))
+				}
 			}
 		}
 	}

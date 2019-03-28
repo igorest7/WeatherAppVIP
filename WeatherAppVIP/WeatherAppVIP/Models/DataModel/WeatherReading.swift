@@ -6,7 +6,7 @@
 //  Copyright © 2019 Igor Nakonetsnoi. All rights reserved.
 //
 
-struct WeatherReading: Decodable {
+struct WeatherReading: Decodable, Equatable {
 	let temp: Float
 	let feelTemp: Float
 	let isDay: Bool
@@ -27,6 +27,18 @@ struct WeatherReading: Decodable {
 
 	enum Conditionkeys: String, CodingKey {
 		case conditionText = "text"
+	}
+
+	init(temp: Float,
+		 feelTemp: Float,
+		 isDay: Bool,
+		 cloudCover: Int,
+		 conditionText: String) {
+		self.temp = temp
+		self.feelTemp = feelTemp
+		self.isDay = isDay
+		self.cloudCover = cloudCover
+		self.conditionText = conditionText
 	}
 
 	init(from decoder: Decoder) throws {
