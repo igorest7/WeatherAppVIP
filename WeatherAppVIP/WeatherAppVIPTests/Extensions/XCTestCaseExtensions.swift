@@ -35,6 +35,9 @@ extension XCTestCase {
 // MARK: - MockRequests
 enum XCTestMockRequest: String {
 	case currentWeatherValid = "CurrentWeatherValidResponse"
+	case currentWeatherPartiallyInvalid = "CurrentWeatherPartiallyInvalidResponse"
+	case currentWeatherInvalid = "CurrentWeatherInvalidResponse"
+	case currentWeatherMissingValues = "CurrentWeatherMissinValuesResponse"
 }
 
 extension XCTestCase {
@@ -45,5 +48,3 @@ extension XCTestCase {
 		return data
 	}
 }
-
-

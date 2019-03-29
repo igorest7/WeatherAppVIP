@@ -1,0 +1,11 @@
+{
+  "current": {
+	  "temp_c": 11.2,
+	  "invalid": 12,
+	  "is_day": 1,
+	  "cloud": 25,
+	  "condition": {
+		  "text": "Clear"
+	  }
+  }
+}
