@@ -16,7 +16,9 @@ class CurrentWeatherNetworkingRouterTests: XCTestCase {
 		let request = try require(try? router.asURLRequest())
 		XCTAssertEqual(request.httpMethod, HTTPMethod.get.rawValue)
 		XCTAssertNotNil(request.url)
-		XCTAssertEqual(request.url, URL(string: "https://api.apixu.com/v1/current.json?key=cff396985d8b44d997e181537192603&q=\(city)"))
+		XCTAssertTrue(request.url?.absoluteString.hasPrefix("https://api.apixu.com/v1/current.json?") ?? false)
+		XCTAssertTrue(request.url?.absoluteString.contains("key=cff396985d8b44d997e181537192603") ?? false)
+		XCTAssertTrue(request.url?.absoluteString.contains("q=\(city)") ?? false)
 		XCTAssertEqual(request.cachePolicy, .reloadIgnoringLocalCacheData)
 	}
 }
