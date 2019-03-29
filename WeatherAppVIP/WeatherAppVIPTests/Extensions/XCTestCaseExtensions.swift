@@ -9,6 +9,7 @@
 // This code snippet is from here https://medium.com/@johnsundell/avoiding-force-unwrapping-in-swift-unit-tests-5c2b9ea64091
 import XCTest
 
+// MARK: - Require
 extension XCTestCase {
 	// We conform to LocalizedError in order to be able to output
 	// a nice error message.
@@ -30,3 +31,19 @@ extension XCTestCase {
 		return value
 	}
 }
+
+// MARK: - MockRequests
+enum XCTestMockRequest: String {
+	case currentWeatherValid = "CurrentWeatherValidResponse"
+}
+
+extension XCTestCase {
+	class func jsonDataWithResponse(type: XCTestMockRequest) -> Data? {
+		let bundle = Bundle(for: WeatherReadingTests.classForCoder())
+		guard let file = bundle.url(forResource: type.rawValue, withExtension: "json") else { return nil }
+		let data = try? Data(contentsOf: file)
+		return data
+	}
+}
+
+

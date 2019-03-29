@@ -1,0 +1,11 @@
+{
+  "current": {
+	  "temp_c": 11.2,
+	  "feelslike_c": 12,
+	  "is_day": 1,
+	  "cloud": 25,
+	  "condition": {
+		  "text": "Clear"
+	  }
+  }
+}
