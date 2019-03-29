@@ -42,6 +42,7 @@
 		5C68E7BC224EB89200F0FD8D /* CurrentWeatherInvalidResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C68E7BB224EB89200F0FD8D /* CurrentWeatherInvalidResponse.json */; };
 		5C68E7BE224EB8BF00F0FD8D /* CurrentWeatherPartiallyInvalidResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C68E7BD224EB8BE00F0FD8D /* CurrentWeatherPartiallyInvalidResponse.json */; };
 		5C68E7C0224EB9B300F0FD8D /* CurrentWeatherMissinValuesResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C68E7BF224EB9B300F0FD8D /* CurrentWeatherMissinValuesResponse.json */; };
+		5C68E7C2224EBA6A00F0FD8D /* CurrentWeatherNetworkingRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C68E7C1224EBA6A00F0FD8D /* CurrentWeatherNetworkingRouterTests.swift */; };
 		5CBD7A12224AA47E00A74095 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBD7A11224AA47E00A74095 /* Constants.swift */; };
 		5CBD7A15224AA7E400A74095 /* WeatherNetworkWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBD7A14224AA7E400A74095 /* WeatherNetworkWorker.swift */; };
 		5CBD7A18224AAB5900A74095 /* Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBD7A17224AAB5900A74095 /* Either.swift */; };
@@ -97,6 +98,7 @@
 		5C68E7BB224EB89200F0FD8D /* CurrentWeatherInvalidResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CurrentWeatherInvalidResponse.json; sourceTree = "<group>"; };
 		5C68E7BD224EB8BE00F0FD8D /* CurrentWeatherPartiallyInvalidResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CurrentWeatherPartiallyInvalidResponse.json; sourceTree = "<group>"; };
 		5C68E7BF224EB9B300F0FD8D /* CurrentWeatherMissinValuesResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CurrentWeatherMissinValuesResponse.json; sourceTree = "<group>"; };
+		5C68E7C1224EBA6A00F0FD8D /* CurrentWeatherNetworkingRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherNetworkingRouterTests.swift; sourceTree = "<group>"; };
 		5CBD7A11224AA47E00A74095 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5CBD7A14224AA7E400A74095 /* WeatherNetworkWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherNetworkWorker.swift; sourceTree = "<group>"; };
 		5CBD7A17224AAB5900A74095 /* Either.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Either.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 				5C0B2C49224CB1B000DBD337 /* Extensions */,
 				5C68E7B8224EB40500F0FD8D /* MockJSON */,
 				5C68E7B4224EB2CD00F0FD8D /* Models */,
+				5C68E7C3224EBA6F00F0FD8D /* Networking */,
 				5C0B2C40224CAEC300DBD337 /* Screens */,
 				5C0B2C46224CAFB100DBD337 /* WorkerMocks */,
 				5C65E60B2244203F001FB04C /* Info.plist */,
@@ -349,6 +352,22 @@
 				5C68E7B6224EB3EA00F0FD8D /* CurrentWeatherValidResponse.json */,
 			);
 			path = MockJSON;
+			sourceTree = "<group>";
+		};
+		5C68E7C3224EBA6F00F0FD8D /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				5C68E7C4224EBA8500F0FD8D /* Routers */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		5C68E7C4224EBA8500F0FD8D /* Routers */ = {
+			isa = PBXGroup;
+			children = (
+				5C68E7C1224EBA6A00F0FD8D /* CurrentWeatherNetworkingRouterTests.swift */,
+			);
+			path = Routers;
 			sourceTree = "<group>";
 		};
 		5CBD7A13224AA7CE00A74095 /* Support */ = {
@@ -507,6 +526,7 @@
 				5C0B2C4D224CBC8200DBD337 /* MainWeatherPresenterTests.swift in Sources */,
 				5C0B2C4B224CB28000DBD337 /* XCTestCaseExtensions.swift in Sources */,
 				5C0B2C43224CAF2600DBD337 /* MainWeatherInteractorTests.swift in Sources */,
+				5C68E7C2224EBA6A00F0FD8D /* CurrentWeatherNetworkingRouterTests.swift in Sources */,
 				5C0B2C48224CB0CA00DBD337 /* GenericDataModelsExtensions.swift in Sources */,
 				5C0B2C3F224CAEBF00DBD337 /* MainWeatherConfiguratorTests.swift in Sources */,
 				5C68E7B3224EB2CA00F0FD8D /* WeatherReadingTests.swift in Sources */,
