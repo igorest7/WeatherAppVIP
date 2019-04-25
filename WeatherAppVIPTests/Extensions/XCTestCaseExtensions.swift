@@ -41,10 +41,13 @@ enum XCTestMockRequest: String {
 }
 
 extension XCTestCase {
-	class func jsonDataWithResponse(type: XCTestMockRequest) -> Data? {
+	class func jsonDataWithResponse(type: XCTestMockRequest) -> Data {
 		let bundle = Bundle(for: WeatherReadingTests.classForCoder())
-		guard let file = bundle.url(forResource: type.rawValue, withExtension: "json") else { return nil }
-		let data = try? Data(contentsOf: file)
+		guard let file = bundle.url(forResource: type.rawValue, withExtension: "json"),
+		let data = try? Data(contentsOf: file) else {
+			XCTFail("Json \(type.rawValue) could not be loaded")
+			fatalError()
+		}
 		return data
 	}
 }
